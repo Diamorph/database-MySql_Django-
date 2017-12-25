@@ -1,0 +1,54 @@
+
+{% extends 'lab2\main.html' %}
+{% load staticfiles %}
+
+{% block search-ph %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+         <div class="form-group">
+             <h3>Аптеки</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Місто</th>
+            <th>Ліцензія</th>
+            <th>Цілодобова</th>
+        </tr>
+        </thead>
+             {% for elem in pharmacy_list%}
+                <tr>
+                {% for i in elem%}
+                <td>{{i}}</td>
+    {% endfor %}
+        </tr>
+
+            {%endfor%}
+                 </table>
+            </div>
+    </div>
+<div class="col-md-4">
+    <h1>Пошук в аптеках</h1>
+    <form action="/search-ph/" method="post">{% csrf_token %}
+        <div class="form-group">
+    <label>Місто</label>
+    <input class="form-control" type="text" name = "city_search">
+  </div>
+  <div class="form-group">
+   <label>Цілодобова</label>
+      <input class="form-control" type="text" name = 'day_and_night_search'>
+  </div>
+    <button type="submit" class="btn btn-success">Пошук</button>
+    </form>
+</div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

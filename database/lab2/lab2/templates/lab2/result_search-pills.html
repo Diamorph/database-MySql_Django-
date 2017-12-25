@@ -1,0 +1,48 @@
+{% extends 'lab2\main.html' %}
+{% load staticfiles %}
+
+{% block result_search-pills %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                  <div class="form-group">
+             <h3>Результати пошуку в ліках</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Склад</th>
+            <th>Ціна</th>
+            <th>Виробник</th>
+            <th>Аптека</th>
+        </tr>
+        </thead>
+             {% for elem in result_list%}
+                <tr>
+                    <td>{{elem.0}}</td>
+                    <td>{{elem.1}}</td>
+                    <td>{{elem.2}}</td>
+                    <td>{{elem.3}}</td>
+                    <td>{{elem.4}}</td>
+                    <td>{{elem.5}}</td>
+                    <td>
+                        <form action = "/edit/{{elem.0}}" method = "GET">{% csrf_token %}
+        <input class  ="button btn-warning"  type = "submit"  value = "Редагувати">
+        </form>
+                    </td>
+                    <td>
+                        <form action = "/del/{{elem.0}}/" method = "POST">{% csrf_token %}
+        <input class  ="button btn-danger"  type = "submit"  value = "Видалити">
+        </form>
+                    </td>
+        </tr>
+
+            {%endfor%}
+                 </table>
+            </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

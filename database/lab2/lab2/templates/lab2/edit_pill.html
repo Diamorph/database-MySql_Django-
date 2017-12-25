@@ -1,0 +1,50 @@
+{% extends 'lab2\main.html' %}
+{% load staticfiles %}
+
+{% block edit %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Редагувати ліки</h1>
+            <form method="post">{% csrf_token %}
+                            <div class="form-group">
+                        <label for="">Назва</label>
+                        <input class="form-control" type="text" name = "name_edit">
+                      </div>
+                      <div class="form-group">
+                       <label for="">Склад</label>
+                          <textarea class="form-control" name = 'consist_edit'></textarea>
+                      </div>
+
+                        <div class="form-group">
+                            <label for="">Ціна</label>
+                            <input class="form-control" type="number" name = 'price_edit'>
+                        </div>
+                            <div class="form-group">
+                                 <select class="form-control" name="medic_edit" >
+                             {% for elem in med_name_list%}
+                                {% for i in elem %}
+                                    <option value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            {%endfor%}
+                        </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="pharmacy_edit" id="">
+                             {% for elem in ph_name_list%}
+                                {% for i in elem %}
+                                <option class="form-control" value="{{i}}">{{i}}</option>
+                                {%endfor%}
+                            {%endfor%}
+                        </select>
+                            </div>
+                <button type="submit" class="btn btn-warning">Редагувати</button>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

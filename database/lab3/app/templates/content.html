@@ -1,0 +1,129 @@
+
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+         <div class="form-group">
+             <h3>Аптеки</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Місто</th>
+            <th>Ліцензія</th>
+            <th>Цілодобова</th>
+        </tr>
+        </thead>
+               {% for elem in pharmacy_list%}
+                <tr>
+                    <td>{{elem.id}}</td>
+                    <td>{{elem.name}}</td>
+                    <td>{{elem.city}}</td>
+                    <td>{{elem.lisense}}</td>
+                    <td>{{elem.day_and_night}}</td>
+                    <td>
+                        <form action = "/edit/ph/{{elem.id}}" method = "GET">{% csrf_token %}
+        <input class  ="button btn-warning"  type = "submit"  value = "Редагувати">
+        </form>
+                    </td>
+                    <td>
+                        <form action = "/del/ph/{{elem.id}}/" method = "POST">{% csrf_token %}
+        <input class  ="button btn-danger"  type = "submit"  value = "Видалити">
+        </form>
+                    </td>
+        </tr>
+                 {%endfor%}
+                 </table>
+            </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <h3>Виробники ліків</h3>
+             <table class = "table table-bordered table-hover">
+             <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Ліцензія</th>
+            <th>Про компанію</th>
+            <th>Співпраця</th>
+        </tr>
+             </thead>
+               {% for elem in medic_list%}
+                <tr>
+                    <td>{{elem.id}}</td>
+                    <td>{{elem.name}}</td>
+                    <td>{{elem.lisense}}</td>
+                    <td>{{elem.about}}</td>
+                    <td>{{elem.cooperation}}</td>
+                    <td>
+                        <form action = "/edit/md/{{elem.id}}" method = "GET">{% csrf_token %}
+        <input class  ="button btn-warning"  type = "submit"  value = "Редагувати">
+        </form>
+                    </td>
+                    <td>
+                        <form action = "/del/md/{{elem.id}}/" method = "POST">{% csrf_token %}
+        <input class  ="button btn-danger"  type = "submit"  value = "Видалити">
+        </form>
+                    </td>
+        </tr>
+                 {%endfor%}
+                 </table>
+            </div>
+
+            </div>
+        </div>
+
+        </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                  <div class="form-group">
+             <h3>Ліки</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Склад</th>
+            <th>Ціна</th>
+            <th>Виробник</th>
+            <th>Аптека</th>
+        </tr>
+        </thead>
+             {% for elem in pills_list%}
+                <tr>
+                    <td>{{elem.id}}</td>
+                    <td>{{elem.name}}</td>
+                    <td>{{elem.consist}}</td>
+                    <td>{{elem.price}}</td>
+                    <td>{{elem.medic}}</td>
+                    <td>{{elem.pharmacy}}</td>
+                    <td>
+                        <form action = "/edit/pill/{{elem.id}}" method = "GET">{% csrf_token %}
+        <input class  ="button btn-warning"  type = "submit"  value = "Редагувати">
+        </form>
+                    </td>
+                    <td>
+                        <form action = "/del/pill/{{elem.id}}/" method = "POST">{% csrf_token %}
+        <input class  ="button btn-danger"  type = "submit"  value = "Видалити">
+        </form>
+                    </td>
+        </tr>
+
+            {%endfor%}
+                 </table>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

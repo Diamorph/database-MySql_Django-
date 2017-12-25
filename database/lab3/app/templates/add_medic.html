@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+
+{% block add_medic %}
+<form action="/add-medic/" method="post">{% csrf_token %}
+{{form_medic.as_p}}
+    <button>Додати</button>
+</form>
+{% endblock %}

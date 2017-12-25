@@ -1,0 +1,54 @@
+
+{% extends 'lab2\main.html' %}
+{% load staticfiles %}
+
+{% block search-med %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+         <div class="form-group">
+             <h3>Виробники</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Ліцензія</th>
+            <th>Про компанію</th>
+            <th>Співпраця</th>
+        </tr>
+        </thead>
+             {% for elem in medic_list%}
+                <tr>
+                {% for i in elem%}
+                <td>{{i}}</td>
+    {% endfor %}
+        </tr>
+
+            {%endfor%}
+                 </table>
+            </div>
+    </div>
+<div class="col-md-4">
+    <h1>Пошук в виробниках</h1>
+    <form action="/search-med/" method="post">{% csrf_token %}
+        <div class="form-group">
+    <label>Ліцензія</label>
+    <input class="form-control" type="text" name = "lisense_search">
+  </div>
+  <div class="form-group">
+   <label>Співпраця</label>
+      <input class="form-control" type="text" name = 'cooperation_search'>
+  </div>
+    <button type="submit" class="btn btn-success">Пошук</button>
+    </form>
+</div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

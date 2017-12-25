@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block edit-pharmacy %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Редагувати аптеку</h1>
+            <form method="post">{% csrf_token %}
+                            <div class="form-group">
+                        <label>Назва</label>
+                        <input class="form-control" type="text" name = "name_edit">
+                      </div>
+                      <div class="form-group">
+                       <label>Місто</label>
+                          <textarea class="form-control" name = 'city_edit'></textarea>
+                      </div>
+
+                        <div class="form-group">
+                            <label>Ліцензія</label>
+                            <input class="form-control" name = 'lisense_edit'>
+                        </div>
+                        <div class="form-group">
+                            <label>Цілодобова</label>
+                            <input class="form-control" type="checkbox" name = 'day_and_night_edit'>
+                        </div>
+
+                <button type="submit" class="btn btn-warning">Редагувати</button>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'lab2\main.html' %}
+{% load staticfiles %}
+
+{% block result_search-med %}
+       <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+         <div class="form-group">
+             <h3>Результати пошуку в виробниках</h3>
+             <table class = "table table-bordered table-hover">
+                 <thead>
+        <tr>
+            <th>id</th>
+            <th>Назва</th>
+            <th>Ліцензія</th>
+            <th>Про компанію</th>
+            <th>Співпраця</th>
+        </tr>
+        </thead>
+             {% for elem in result_list%}
+                <tr>
+                {% for i in elem%}
+                <td>{{i}}</td>
+    {% endfor %}
+        </tr>
+
+            {%endfor%}
+                 </table>
+            </div>
+    </div>
+        </div>
+       </div>
+
+
+{% endblock %}

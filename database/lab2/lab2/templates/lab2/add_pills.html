@@ -1,0 +1,45 @@
+
+{% extends 'lab2/main.html' %}
+{% block add %}
+<div class="col-md-4">
+    <h1>Додати ліки</h1>
+    <form action="/add-pills/" method="post">{% csrf_token %}
+        <div class="form-group">
+    <label for="">Назва</label>
+    <input class="form-control" type="text" name = "name">
+  </div>
+  <div class="form-group">
+   <label for="">Склад</label>
+      <textarea class="form-control" name = 'consist'></textarea>
+  </div>
+
+    <div class="form-group">
+        <label for="">Ціна</label>
+        <input class="form-control" type="number" name = 'price'>
+    </div>
+        <div class="form-group">
+             <select class="form-control" name="medic" >
+         {% for elem in med_name_list%}
+            {% for i in elem %}
+                <option value="{{i}}">{{i}}</option>
+            {%endfor%}
+        {%endfor%}
+    </select>
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="pharmacy" id="">
+         {% for elem in ph_name_list%}
+            {% for i in elem %}
+            <option class="form-control" value="{{i}}">{{i}}</option>
+            {%endfor%}
+        {%endfor%}
+    </select>
+        </div>
+
+
+
+  <button type="submit" class="btn btn-success">Додати</button>
+</form>
+</div>
+
+{% endblock %}

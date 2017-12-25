@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous">
+
+       {%if result %}
+<script>
+        alert("{{result}}");
+    </script>
+{% endif %}
+
+    {% if empty %}
+    <script>
+        alert('{{empty}}');
+    </script>
+    {% endif %}
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Лаба 2</a>
+    </div>
+
+ <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+ <ul class="nav navbar-nav">
+ <li><a href="/">Головна</a></li>
+ <li><a href="/add-pills/">Додати ліки</a></li>
+ <li><a href="/write-ph/">Аптеки</a></li>
+ <li><a href="/write-med/">Виробники</a></li>
+     <li class="dropdown">
+ <a href="#" class="dropdown-toggle" data-toggle="dropdown">Пошук<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+         <li><a href="/search-ph/">Пошук в аптеках</a></li>
+         <li><a href="/search-med/">Пошук в  виробниках</a></li>
+         <li><a href="/search-bool/">Пошук (Boolean mode)</a></li>
+    </ul>
+     </li>
+ </ul>
+ </div><!-- /.navbar-collapse --><!-- /.container-fluid -->
+</div>
+</nav>
+
+
+    {% block content %}
+    {% endblock %}
+
+    {% block add %}
+    {% endblock %}
+
+    {% block edit %}
+    {% endblock %}
+
+    {% block search-ph %}
+    {% endblock %}
+
+    {% block search-med %}
+    {% endblock %}
+
+    {% block result_search-ph %}
+    {% endblock %}
+
+    {% block result_search-med %}
+    {% endblock %}
+
+    {% block search-pills %}
+    {% endblock %}
+
+    {% block result_search-pills %}
+    {% endblock %}
+
+</body>
+</html>

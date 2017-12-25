@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block add-ph %}
+<div class="col-md-4">
+    <h1>Додати ліки</h1>
+    <form action="/add/ph/" method="post">{% csrf_token %}
+        <div class="form-group">
+    <label>Назва</label>
+    <input class="form-control" type="text" name = "name">
+  </div>
+  <div class="form-group">
+   <label>Місто</label>
+      <textarea class="form-control" type="text" name = 'city'></textarea>
+  </div>
+
+    <div class="form-group">
+        <label>Ліцензія</label>
+        <input class="form-control" type="text" name = 'lisense'>
+    </div>
+ <div class="form-group">
+        <label>Цілодобова</label>
+        <input class="form-control" type="text" name = 'day_and_night'>
+    </div>
+  <button type="submit" class="btn btn-success">Додати</button>
+</form>
+</div>
+
+{%endblock%}
